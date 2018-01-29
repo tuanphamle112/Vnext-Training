@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       database: 'koa_js_db',
       user: 'root',
-      password: 'tuanphamle112'
+      password: '12345678'
     },
     pool: {
       min: 2,
