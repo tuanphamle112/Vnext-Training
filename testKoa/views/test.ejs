@@ -1,0 +1,59 @@
+
++1
+
+Node.js Tutorial: Phần 7 - Sử dụng EJS làm Template Engine trong Express
+Node.jsexpressjsejs
+ Apr 26th, 11:08 am
+ 2775
+ 3
+ 1
+ Add to my series
+ Report
+Tạo một project Express với express-generator
+Cách nhanh nhất để tạo một project ExpressJS là sử dụng express-generator. Để cài đặt Express generator, bạn ở Command line/Terminal, gõ vào lệnh sau: npm install -g express-generator
+
+Nếu dùng Linux bạn cần thêm từ khoá "sudo" ở đầu dòng lệnh trên, với tham số "-g" có nghĩa là "global". Sau khi cài xong bạn cần cd đến folder muốn tạo project và khởi tạo project bằng lệnh: express
+
+Cài đặt những NodeJS module cần thiết cho project: npm install
+
+Đây là cấu trúc thư mục sau khi cài đặt:
+
+
+
+Sử dụng lệnh sau để run project: node ./bin/www
+
+Truy cập vào project tại địa chỉ: http://localhost:3000
+
+Tích hợp template engine EJS
+Cài đặt ejs: npm install ejs --save
+
+Ở bước trên khi khởi tạo project ExpressJS bằng express-generator nó đã tự động cài đặt và sử dụng jade template engine cho ứng dung, nên bây giờ để cấu hình sử dụng ejs làm templte engine bạn mở file app.js lên và sửa app.set('view engine', 'jade'); thành app.set('view engine', 'ejs'); và sau đó bạn cần xóa các file .jade không cần thiết trong folder views. Bạn có thể remove jade ra khỏi project bằng lệnh: npm uninstall jade --save.
+
+Tiếp theo bạn cần tạo các file .ejs cần thiết ở trong folder views. Ví dụ ở đây mình tạo file index.ejs với nội dung đơn giản như sau: <h2>Hello Word</h2>. Bây giờ bạn truy cập vào project tại địa chỉ: http://localhost:3000 để kiểm tra hoạt động của ejs.
+
+Xây dựng partials common layout với ejs
+Giống như các ứng dụng khác bạn cũng có thể sử dụng ejs để xây dựng các layout dùng chung cho ứng dụng như header. footer, ..
+
+Ví dụ ta tạo các file header.ejs, footer.ejs, sidebar.ejs trong views như sau:
+
+File header.ejs
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Framgia</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</nav><!-- /.navbar -->
