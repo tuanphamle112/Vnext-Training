@@ -23,7 +23,10 @@
       function (data) {
         $results
           .empty()
-          .text(data)
+          .append(data[1].map(function (d, index) {
+            var abc = `<a href="${data[3][index]}">${d}</a><br>`
+            return abc
+          }))
       },
       function (error) {
         $results
